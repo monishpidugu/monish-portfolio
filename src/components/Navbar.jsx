@@ -34,7 +34,7 @@ export default function Navbar() {
           <li>
             <a
               className="navbar__cta"
-              href="/Monish_Abhinav_Resume_v2.pdf"
+              href="/resume.pdf"
               target="_blank"
               rel="noreferrer"
             >
