@@ -59,6 +59,21 @@
   background: var(--border);
 }
 
+.navbar__link--active {
+  color: var(--accent-light) !important;
+  position: relative;
+}
+
+.navbar__link-dot {
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px; height: 4px;
+  background: var(--accent-light);
+  border-radius: 50%;
+}
+
 .navbar__cta {
   background: var(--accent);
   color: #fff;

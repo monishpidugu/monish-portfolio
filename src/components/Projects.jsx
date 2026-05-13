@@ -1,3 +1,4 @@
+import useInView from '../hooks/useInView'
 import './Projects.css'
 
 const projects = [
@@ -44,16 +45,18 @@ const projects = [
 ]
 
 export default function Projects() {
+  const [ref, inView] = useInView()
+
   return (
-    <section id="projects">
+    <section id="projects" ref={ref}>
       <div className="container">
-        <p className="section-label">04. Projects</p>
-        <h2 className="section-title">Things I've Built</h2>
-        <div className="section-line" />
+        <p className={`section-label reveal ${inView ? 'visible' : ''}`}>04. Projects</p>
+        <h2 className={`section-title reveal ${inView ? 'visible' : ''} reveal-delay-1`}>Things I've Built</h2>
+        <div className={`section-line reveal ${inView ? 'visible' : ''} reveal-delay-1`} />
 
         <div className="projects__grid">
-          {projects.map((p) => (
-            <div className={`project-card ${p.highlight ? 'project-card--highlight' : ''}`} key={p.title}>
+          {projects.map((p, i) => (
+            <div className={`project-card glass reveal ${inView ? 'visible' : ''} reveal-delay-${Math.min(i+1,4)} ${p.highlight ? 'project-card--highlight' : ''}`} key={p.title}>
               <div className="project-card__top">
                 <span className="project-card__icon">{p.icon}</span>
                 <span className={`project-card__type project-card__type--${p.type.toLowerCase()}`}>

@@ -1,3 +1,4 @@
+import useInView from '../hooks/useInView'
 import './Experience.css'
 
 const bullets = [
@@ -20,20 +21,22 @@ const techTags = [
 ]
 
 export default function Experience() {
+  const [ref, inView] = useInView()
+
   return (
-    <section id="experience">
+    <section id="experience" ref={ref}>
       <div className="container">
-        <p className="section-label">03. Experience</p>
-        <h2 className="section-title">Work History</h2>
-        <div className="section-line" />
+        <p className={`section-label reveal ${inView ? 'visible' : ''}`}>03. Experience</p>
+        <h2 className={`section-title reveal ${inView ? 'visible' : ''} reveal-delay-1`}>Work History</h2>
+        <div className={`section-line reveal ${inView ? 'visible' : ''} reveal-delay-1`} />
 
         <div className="timeline">
           <div className="timeline__line" />
 
-          <div className="timeline__item">
+          <div className={`timeline__item reveal ${inView ? 'visible' : ''} reveal-delay-2`}>
             <div className="timeline__dot" />
 
-            <div className="timeline__card">
+            <div className="timeline__card glass">
               <div className="timeline__header">
                 <div>
                   <h3 className="timeline__role">Software Engineer – Full Stack</h3>

@@ -1,3 +1,4 @@
+import useInView from '../hooks/useInView'
 import './Skills.css'
 
 const skillGroups = [
@@ -65,16 +66,18 @@ const badges = [
 ]
 
 export default function Skills() {
+  const [ref, inView] = useInView()
+
   return (
-    <section id="skills">
+    <section id="skills" ref={ref}>
       <div className="container">
-        <p className="section-label">02. Skills</p>
-        <h2 className="section-title">Tech Stack</h2>
-        <div className="section-line" />
+        <p className={`section-label reveal ${inView ? 'visible' : ''}`}>02. Skills</p>
+        <h2 className={`section-title reveal ${inView ? 'visible' : ''} reveal-delay-1`}>Tech Stack</h2>
+        <div className={`section-line reveal ${inView ? 'visible' : ''} reveal-delay-1`} />
 
         <div className="skills__groups">
-          {skillGroups.map(g => (
-            <div className="skills__group" key={g.category}>
+          {skillGroups.map((g, i) => (
+            <div className={`skills__group glass reveal ${inView ? 'visible' : ''} reveal-delay-${Math.min(i+1,4)}`} key={g.category}>
               <h3 className="skills__group-title">
                 <span>{g.icon}</span> {g.category}
               </h3>
@@ -87,7 +90,7 @@ export default function Skills() {
           ))}
         </div>
 
-        <div className="skills__badges-wrap">
+        <div className={`skills__badges-wrap glass reveal ${inView ? 'visible' : ''} reveal-delay-3`}>
           <h3 className="skills__badges-title">Other Tools & Technologies</h3>
           <div className="skills__badges">
             {badges.map(b => (
